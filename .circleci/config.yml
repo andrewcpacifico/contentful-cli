@@ -6,6 +6,10 @@ jobs:
     steps:
       - run: node --version
       - run: npm --version
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run: npm install
       - run: npm run build:standalone
       - run: npm run test:e2e
   osx:
@@ -13,10 +17,13 @@ jobs:
       xcode: "9.0"
     steps:
       - run: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+      - run: source ~/.bashrc
       - run: nvm install 8
       - run: nvm use 8
       - run: node --version
       - run: npm --version
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run: npm run build:standalone
       - run: npm run test:e2e
 workflows:
