@@ -33,6 +33,7 @@
     "test:integration:nosetup:ci": "BABEL_ENV=test jest test/integration/cmds/** --verbose --runInBand",
     "test:integration:update": "BABEL_ENV=test jest test/integration/cmds/** --verbose --updateSnapshot",
     "test:integration:watch": "BABEL_ENV=test jest test/integration/cmds/** --verbose --watch",
+    "test:e2e": "BABEL_ENV=test jest test/e2e/** --verbose",
     "test:simulate-ci": "trevor",
     "precommit": "lint-staged",
     "prepush": "jest --changedSince master"
