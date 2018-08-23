@@ -16,7 +16,7 @@ test_script:
   - npm --version
   # run tests
   - npm run build:standalone
-  - ./build/contentful-cli-win.exe
+  - build\contentful-cli-win.exe
 
 # Don't actually build.
 build: off
