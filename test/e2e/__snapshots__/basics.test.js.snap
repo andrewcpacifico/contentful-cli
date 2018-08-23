@@ -49,8 +49,7 @@ Copyright 2018 Contentful, this is a BETA release"
 `;
 
 exports[`should print help message on wrong subcommand 1`] = `
-"Command failed: /bin/sh -c /Users/bene/dev/contentful/contentful-cli/build/contentful-cli-macos lolbar
-
+"
 Usage: contentful <cmd> [args]
 
 Commands:
@@ -72,13 +71,11 @@ Options:
 
 Copyright 2018 Contentful, this is a BETA release
 Please specify a command.
-
 "
 `;
 
 exports[`should return code 1 when errors exist no args 1`] = `
-"Command failed: /bin/sh -c /Users/bene/dev/contentful/contentful-cli/build/contentful-cli-macos
-
+"
 Usage: contentful <cmd> [args]
 
 Commands:
@@ -100,6 +97,5 @@ Options:
 
 Copyright 2018 Contentful, this is a BETA release
 Please specify a command.
-
 "
 `;

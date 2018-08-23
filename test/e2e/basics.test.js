@@ -24,7 +24,13 @@ const cwd = join(__dirname, '../../', 'build')
 cmd = join(cwd, cmd)
 
 test('should return code 1 when errors exist no args', async () => {
-  await expect(execa.shell(cmd)).rejects.toThrowErrorMatchingSnapshot()
+  try {
+    await execa.shell(cmd)
+    throw new Error('CLI should exit with error')
+  } catch (error) {
+    expect(error.code).toBe(1)
+    expect(error.stderr).toMatchSnapshot()
+  }
 })
 
 test('should print help message', async () => {
@@ -38,7 +44,13 @@ test('should print help message on shortcut', async () => {
 })
 
 test('should print help message on wrong subcommand', async () => {
-  await expect(execa.shell(`${cmd} lolbar`)).rejects.toThrowErrorMatchingSnapshot()
+  try {
+    await execa.shell(`${cmd} lolbar`)
+    throw new Error('CLI should exit with error')
+  } catch (error) {
+    expect(error.code).toBe(1)
+    expect(error.stderr).toMatchSnapshot()
+  }
 })
 
 test('should print version number', async () => {
