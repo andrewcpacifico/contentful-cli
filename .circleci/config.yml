@@ -1,0 +1,27 @@
+version: 2.0
+jobs:
+  linux:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - run: node --version
+      - run: npm --version
+      - run: npm run build:standalone
+      - run: npm run test:e2e
+  osx:
+    macos:
+      xcode: "9.0"
+    steps:
+      - run: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+      - run: nvm install 8
+      - run: nvm use 8
+      - run: node --version
+      - run: npm --version
+      - run: npm run build:standalone
+      - run: npm run test:e2e
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - linux
+      - osx
