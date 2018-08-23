@@ -15,7 +15,6 @@ test_script:
   - node --version
   - npm --version
   # run tests
-  - npm run test:unit
   - npm run build:standalone
   - npm run test:e2e
 
